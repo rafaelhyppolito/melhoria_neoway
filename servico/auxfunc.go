@@ -27,6 +27,9 @@ func ImportaArquivoCSV(caminho string)  {
 	//Remove as virgulas e troca por pontos, nos campos de valores
 	repo.ExecSQL(repo.RemoveVirgulasSQL(), Conexao)
 
+	//Seta o formato de data para evitar erros
+	repo.ExecSQL(repo.DateStyleSQL(), Conexao)
+
 	//Insere na tabela final, convertendo os dados para os formatos corretos
 	repo.ExecSQL(repo.InsertFinalSQL(), Conexao)
 	fmt.Println("Arquivo carregado com sucesso!")

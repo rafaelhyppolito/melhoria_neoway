@@ -8,13 +8,18 @@ func TruncateTmpSQL() string{
 //Funcao com srcipt SQL para importar o arquivo txt para dentro da base SQL
 func ImportaArquivoSQL(caminho string) string {
 	return "COPY basetmp (cpf,priv,incompleto,dtultcompra,ticketmedio,ticketultcompra,"+
-		   "lojmaisfrequente,lojultcompra) FROM 'C://base_teste2.txt' USING DELIMITERS ';' ;"
+		   "lojmaisfrequente,lojultcompra) FROM '" + caminho + "' USING DELIMITERS ';'"
 }
 
 //Funcao com srcipt SQL para remover todas as virgulas dos valores e trocar por pontos
 func RemoveVirgulasSQL() string{
 	return "UPDATE basetmp SET ticketmedio = replace(ticketmedio,',','.'), "+
-		   "ticketultcompra = replace(ticketultcompra,',','.');"
+		   "ticketultcompra = replace(ticketultcompra,',','.')"
+}
+
+//Funcao com script SQL para setar o formato de data e evitar erros
+func DateStyleSQL() string{
+	return "SET datestyle = dmy"
 }
 
 //Funcao com script SQL para inserção final dos dados já higienizados
