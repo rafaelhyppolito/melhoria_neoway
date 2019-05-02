@@ -1,24 +1,24 @@
 package repo
 
 //Funcao com srcipt SQL para limpar a tabela temporária
-func truncateTmpSQL() string{
+func TruncateTmpSQL() string{
 	return "TRUNCATE TABLE basetmp"
 }
 
 //Funcao com srcipt SQL para importar o arquivo txt para dentro da base SQL
-func importaArquivoSQL(caminho string) string {
+func ImportaArquivoSQL(caminho string) string {
 	return "COPY basetmp (cpf,priv,incompleto,dtultcompra,ticketmedio,ticketultcompra,"+
 		   "lojmaisfrequente,lojultcompra) FROM 'C://base_teste2.txt' USING DELIMITERS ';' ;"
 }
 
 //Funcao com srcipt SQL para remover todas as virgulas dos valores e trocar por pontos
-func removePontosSQL() string{
+func RemoveVirgulasSQL() string{
 	return "UPDATE basetmp SET ticketmedio = replace(ticketmedio,',','.'), "+
 		   "ticketultcompra = replace(ticketultcompra,',','.');"
 }
 
 //Funcao com script SQL para inserção final dos dados já higienizados
-func insertFinalSQL() string {
+func InsertFinalSQL() string {
 	return "insert into base(cpf,priv,incompleto,dtultcompra,ticketmedio,ticketultcompra,"+
 		   "lojmaisfrequente,lojultcompra) select replace(replace(cpf,'.',''),'-',''), CAST"+
 		   "(priv AS INTEGER), CAST(incompleto AS INTEGER), CASE WHEN dtultcompra = 'NULL' "+

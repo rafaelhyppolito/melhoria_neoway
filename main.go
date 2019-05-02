@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/rafaelhyppolito/melhoria_neoway/servico"
+	"github.com/rafaelhyppolito/melhoria_neoway/repo"
 	"time"
 	"fmt"
 	"net/http"
@@ -28,7 +28,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 		
 		var start time.Time
     	start = time.Now()
-		servico.importaArquivoSQL(arquivo) 
+		repo.ImportaArquivoCSV(arquivo)
 		fmt.Fprintf(w, "Arquivo carregado com sucesso! \r\nAs informações estão no banco de dados!")
 		fmt.Println("Tempo de execução: ",time.Since(start))
 
