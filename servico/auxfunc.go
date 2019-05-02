@@ -1,9 +1,9 @@
 package servico
 
 import (
-	"github.com/rafaelhyppolito/testeneoway_melhorado/servico"
+	"github.com/rafaelhyppolito/melhoria_neoway/servico"
 	"database/sql"
-	"github.com/rafaelhyppolito/testeneoway_melhorado/repo"
+	"github.com/rafaelhyppolito/melhoria_neoway/repo"
 	"strings"
 	"fmt"
 	"bufio"

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/rafaelhyppolito/testeneoway_melhorado/servico"
+	"github.com/rafaelhyppolito/melhoria_neoway/servico"
 	"time"
 	"fmt"
 	"net/http"
